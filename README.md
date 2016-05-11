@@ -1,2 +1,2 @@
-# multimodal_interaction
+# Multimodal Interaction
 Group A
