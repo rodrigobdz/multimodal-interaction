@@ -1,6 +1,6 @@
 #include <iostream>
 #include <opencv2\opencv.hpp>
-#include "face_detect_n_track-master\VideoFaceDetector.h"
+#include "face_detect_n_track\VideoFaceDetector.h"
 #include "StoreCandy.h"
 
 const cv::String    WINDOW_NAME("Camera video");
