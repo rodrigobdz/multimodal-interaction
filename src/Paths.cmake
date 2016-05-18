@@ -6,7 +6,7 @@
 
 # OpenCV first stage
 if(WIN32)
-	set(OpenCV_DIR "D:/Projects/OpenCV/opencv/build")
+	set(OpenCV_DIR "C:/Users/Scottish-fold/Documents/Visual Studio 2015/Projects/OpenCV/opencv/build")
 else()
 	set(OpenCV_DIR "/usr/lib/opencv")
 endif()
