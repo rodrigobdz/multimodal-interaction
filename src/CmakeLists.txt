@@ -19,8 +19,8 @@ MESSAGE(STATUS "Setting OpenCV libary dir to ${OpenCV_LIBS}")
 MESSAGE(STATUS "Setting binary dir to ${CMAKE_BINARY_DIR}") 
 
 # Get our headers and sources
-set(HEADERS face_detect_n_track-master/VideoFaceDetector.h StoreCandy.h)
-set(SOURCES face_detect_n_track-master/VideoFaceDetector.cpp StoreCandy.cpp main.cpp)
+set(HEADERS face_detect_n_track/VideoFaceDetector.h StoreCandy.h)
+set(SOURCES face_detect_n_track/VideoFaceDetector.cpp StoreCandy.cpp main.cpp)
 
 # Add Programm
 add_executable(CandyCatch ${HEADERS} ${SOURCES})
@@ -37,7 +37,7 @@ else()
 endif()
 
 # Copy the classifier file
-file( COPY "face_detect_n_track-master/haarcascade_frontalface_default.xml" DESTINATION ${DEBUG_BINARY_DIR} NO_SOURCE_PERMISSIONS )
-file( COPY "face_detect_n_track-master/haarcascade_frontalface_default.xml" DESTINATION ${RELEASE_BINARY_DIR} NO_SOURCE_PERMISSIONS )
+file( COPY "face_detect_n_track/haarcascade_frontalface_default.xml" DESTINATION ${DEBUG_BINARY_DIR} NO_SOURCE_PERMISSIONS )
+file( COPY "face_detect_n_track/haarcascade_frontalface_default.xml" DESTINATION ${RELEASE_BINARY_DIR} NO_SOURCE_PERMISSIONS )
 
 MESSAGE(STATUS "................................done................................") 
