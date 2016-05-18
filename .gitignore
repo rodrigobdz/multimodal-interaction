@@ -28,4 +28,4 @@
 *.app
 
 build/
-Paths.cmake
+src/Paths.cmake
