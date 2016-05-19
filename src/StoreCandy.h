@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <random>
 #include "opencv2/opencv.hpp"
 
 class cStoreCandy
@@ -17,6 +18,11 @@ private:
 	
 	std::vector<sCandys> moCurrentCandy;
 	std::vector<cv::Point> moGrid;
+
+	int mnScore;
+	int mnCurPos;
+	double mdTimerStart;
+	double mdLastChange;
 
 public:
 

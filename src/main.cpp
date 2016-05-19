@@ -19,8 +19,10 @@ int main(int argc, char** argv)
 	cStoreCandy Candys;
 	std::vector<cv::Mat> CandyImgs;
 	CandyImgs.push_back(cv::imread("..\\..\\img\\candy_icon.png"));
+	cv::Mat initImg;
+	camera >> initImg;
 
-	if (Candys.initialize(CandyImgs,50,50) < 0)
+	if (Candys.initialize(CandyImgs,initImg.cols,initImg.rows) < 0)
 	{
 		std::cout << "FATAL Can't create Candys.. STOP" << std::endl;
 		return -1;
@@ -41,8 +43,9 @@ int main(int argc, char** argv)
 		cv::rectangle(frame, detector.face(), cv::Scalar(255, 0, 0));
 		cv::circle(frame, detector.facePosition(), 30, cv::Scalar(0, 255, 0));
 
-		// TODO imlement cStoreCandy
-
+		// TODO implement collisionfunction of cStoreCandy
+		Candys.plotCandy(&frame);
+	
 		cv::imshow(WINDOW_NAME, frame);
 		if (cv::waitKey(25) == 27) break;
 	}
