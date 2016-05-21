@@ -12,7 +12,7 @@ private:
 	
 	struct sCandys
 	{
-		cv::Point pntPosition;
+		cv::Rect rctPosition;
 		int nDesign;
 	};
 	
@@ -30,7 +30,7 @@ public:
 	~cStoreCandy();
 
 	int initialize(std::vector<cv::Mat> oAvailableCandy, int nWidth, int nHeight);
-	int setUpCandy();
+	int setUpCandy(cv::Rect rctFacePosition);
 	int checkCollision(cv::Rect rctFacePosition);
 	int plotCandy(cv::Mat * oImg);
 	

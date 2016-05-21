@@ -18,7 +18,8 @@ int main(int argc, char** argv)
 
 	cStoreCandy Candys;
 	std::vector<cv::Mat> CandyImgs;
-	CandyImgs.push_back(cv::imread("..\\..\\img\\candy_icon.png"));
+	CandyImgs.push_back(cv::imread("candy_icon.png"));
+	
 	cv::Mat initImg;
 	camera >> initImg;
 
@@ -27,6 +28,7 @@ int main(int argc, char** argv)
 		std::cout << "FATAL Can't create Candys.. STOP" << std::endl;
 		return -1;
 	}
+	Candys.setUpCandy(cv::Rect(1, 1, 1, 1));
 
 	cv::namedWindow(WINDOW_NAME, cv::WINDOW_KEEPRATIO | cv::WINDOW_AUTOSIZE);
 
@@ -43,7 +45,16 @@ int main(int argc, char** argv)
 		cv::rectangle(frame, detector.face(), cv::Scalar(255, 0, 0));
 		cv::circle(frame, detector.facePosition(), 30, cv::Scalar(0, 255, 0));
 
-		// TODO implement collisionfunction of cStoreCandy
+		// brief: predicted mouth area
+		// TODO replace this
+		cv::Rect mth;
+		mth.x = detector.face().x + (int)((double)detector.face().width / 4);
+		mth.y = detector.face().y + (int)(2 * (double)detector.face().height / 3);
+		mth.height = (int)((double)detector.face().height / 4);
+		mth.width = (int)((double)detector.face().width / 2);
+		cv::rectangle(frame, mth, cv::Scalar(255, 0, 0));
+		
+		Candys.checkCollision(mth);
 		Candys.plotCandy(&frame);
 	
 		cv::imshow(WINDOW_NAME, frame);
