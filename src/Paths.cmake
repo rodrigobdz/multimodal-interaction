@@ -4,25 +4,31 @@
 #
 # You usually have to change here your system paths
 
-# OpenCV first stage
+# OpenCV/irrKlang first stage
 if(WIN32)
-	set(OpenCV_DIR "D:/Projects/OpenCV/opencv/build")
+	set(OpenCV_DIR "D:/OpenCV/opencv/build")
+	set(IrrKlang_DIR "D:/irrKlang-64bit-1.5.0")
 else()
 	set(OpenCV_DIR "/usr/lib/opencv")
+	set(IrrKlang_DIR "/usr/lib/irrKlang-64bit-1.5.0")
 endif()
 
-# OpenCV Include dir
+# OpenCV/irrKlang Include dir
 set(OpenCV_INCLUDE_DIRS "${OpenCV_DIR}/include")
+set(IrrKlang_INCLUDE_DIRS "${IrrKlang_DIR}/include")
 
-# OpenCV Library dir
+# OpenCV/irrKlang Library dir
 set(OpenCV_LIBS "${OpenCV_DIR}/x64/vc14/lib")
+set(IrrKlang_LIBS "${IrrKlang_DIR}/lib/Winx64-visualStudio")
 
-# OpenCV Binary dir
+# OpenCV/irrKlang Binary dir
 if(WIN32)
 	set(OpenCV_BINS "${OpenCV_DIR}/x64/vc14/bin")
+	set(IrrKlang_BINS "${IrrKlang_DIR}/bin/winx64-visualStudio")
 else()
 	# TODO You need binarys for iOS?? change here
 	set(OpenCV_BINS "${OpenCV_DIR}/x64/vc14/bin")
+	set(IrrKlang_BINS "${IrrKlang_DIR}/bin/macosx-gcc")
 endif()
 
 # Output dir for Debug Binarys
