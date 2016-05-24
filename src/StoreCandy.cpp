@@ -87,6 +87,8 @@ int cStoreCandy::setUpCandy(cv::Rect rctFacePosition)
 
 int cStoreCandy::checkCollision(cv::Rect rctFacePosition)
 {
+	int nCollide = 0;
+
 	// cout << moCurrentCandy.size() << endl;
 	for (size_t i = 0; i < moCurrentCandy.size(); i++)
 	{
@@ -101,10 +103,11 @@ int cStoreCandy::checkCollision(cv::Rect rctFacePosition)
 			mnCurPos = -1;
 			moCurrentCandy.erase(moCurrentCandy.begin() + i);
 			setUpCandy(rctFacePosition);
+			nCollide = 1;
 		}
 	}
 
-	return 0;
+	return nCollide;
 }
 
 int cStoreCandy::plotCandy(cv::Mat * oImg)

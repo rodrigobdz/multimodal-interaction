@@ -1,5 +1,6 @@
 #include <iostream>
 #include <opencv2\opencv.hpp>
+#include <irrKlang.h>
 #include "face_detect_n_track\VideoFaceDetector.h"
 #include "StoreCandy.h"
 
@@ -37,6 +38,8 @@ int main(int argc, char** argv)
 	cv::Mat frame;
 
 	// TODO add some Musik
+	irrklang::ISoundEngine* engine = irrklang::createIrrKlangDevice();
+	engine->play2D("getout.ogg", true);
 
 	while (true)
 	{
@@ -53,13 +56,21 @@ int main(int argc, char** argv)
 		mth.height = (int)((double)detector.face().height / 4);
 		mth.width = (int)((double)detector.face().width / 2);
 		cv::rectangle(frame, mth, cv::Scalar(255, 0, 0));
-		
-		Candys.checkCollision(mth);
+
+		if (Candys.checkCollision(mth))
+		{
+			engine->play2D("explosion.wav");
+		}
 		Candys.plotCandy(&frame);
-	
+
+		cv::Mat flipped = cv::Mat(frame.rows, frame.cols, CV_8UC3);
+		cv::flip(frame, flipped, 1);
+		frame = flipped;
+
 		cv::imshow(WINDOW_NAME, frame);
 		if (cv::waitKey(25) == 27) break;
 	}
 
+	engine->drop();
 	return 0;
 }
