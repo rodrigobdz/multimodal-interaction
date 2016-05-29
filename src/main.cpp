@@ -19,7 +19,9 @@ int main(int argc, char** argv)
 
 	cStoreCandy Candys;
 	std::vector<cv::Mat> CandyImgs;
-	CandyImgs.push_back(cv::imread("candy_icon.png"));
+	CandyImgs.push_back(cv::imread("candy1.png", -1)); // Caution!! read with -1 flag to get alpha channel
+	CandyImgs.push_back(cv::imread("candy2.png", -1));
+	CandyImgs.push_back(cv::imread("candy3.png", -1));
 	
 	cv::Mat initImg;
 	camera >> initImg;
@@ -37,7 +39,6 @@ int main(int argc, char** argv)
 	VideoFaceDetector detector(CASCADE_FILE, camera);
 	cv::Mat frame;
 
-	// TODO add some Musik
 	irrklang::ISoundEngine* engine = irrklang::createIrrKlangDevice();
 	engine->play2D("getout.ogg", true);
 
@@ -63,9 +64,11 @@ int main(int argc, char** argv)
 		}
 		Candys.plotCandy(&frame);
 
+		/*
 		cv::Mat flipped = cv::Mat(frame.rows, frame.cols, CV_8UC3);
 		cv::flip(frame, flipped, 1);
 		frame = flipped;
+		*/
 
 		cv::imshow(WINDOW_NAME, frame);
 		if (cv::waitKey(25) == 27) break;
